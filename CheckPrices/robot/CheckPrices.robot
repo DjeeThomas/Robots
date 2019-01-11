@@ -10,12 +10,12 @@ Library    OperatingSystem
 Library    Collections
 
 Resource   ../resources/setup_and_teardown.robot
-#Resource   ../resources/checkprices_variables.robot
+Resource   ../resources/checkprices_variables.robot
 
 *** Variables ***
-${WORKDIR}    ${CURDIR}
-
+#${WORKDIR}    ${CURDIR}
+${url}    https://www.verkkokauppa.com
 
 *** Tasks ***
 Price Checking
-    Open Browser    ${DefaultBrowser}
+    Open Browser    ${url}    ${DefaultBrowser}
