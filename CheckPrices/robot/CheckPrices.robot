@@ -55,5 +55,22 @@ Open Page
     Log    ${Product_Pages}
     :FOR    ${address}    IN    @{Product_Pages}
     \    Log    ${address}[Address]
-    \    Go To    ${address}[Address]
-    \    Sleep    5
+    \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}
+    \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}
+    \    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}
+
+
+Verkkokauppa
+    [Arguments]    ${address}
+    Go To    ${address}[Address]
+    Sleep    5
+
+Gigantti
+    [Arguments]    ${address}
+    Go To    ${address}[Address]
+    Sleep    5
+
+Power
+    [Arguments]    ${address}
+    Go To    ${address}[Address]
+    Sleep    5
