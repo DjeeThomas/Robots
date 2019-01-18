@@ -1,0 +1,40 @@
+[
+	{
+        "Product Name": "Stove",
+        "Product Model": "Electrolux EKI55951OW",
+		"Pages to Check": [
+			{
+				"Title": "Verkkokauppa",
+                "Address": "https://www.verkkokauppa.com"
+            },
+			{
+				"Title": "Gigantti",
+				"Address": "https://www.gigantti.fi"
+			},
+			{
+				"Title": "Power",
+				"Address": "https://www.power.fi"
+			}
+        ],
+        "Price Target": "600"
+    },
+    {
+        "Product Name": "Wireless Headphones",
+        "Product Model": "Sennheiser Momentum True Wireless",
+		"Pages to Check": [
+			{
+				"Title": "Verkkokauppa",
+                "Address": "https://www.verkkokauppa.com"
+            },
+			{
+				"Title": "Gigantti",
+				"Address": "https://www.gigantti.fi"
+			},
+			{
+				"Title": "Power",
+				"Address": "https://www.power.fi"
+			}
+        ],
+        "Price Target": "300"
+	}
+]
