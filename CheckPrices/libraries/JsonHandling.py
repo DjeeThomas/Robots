@@ -23,11 +23,11 @@ class JsonHandling():
         """
             Reads a json file and returns a dictionary with its content
         """
-        print "Json stuff works!"
+        print ("Json stuff works!")
         folder = os.path.dirname(filename)
         if not os.path.isdir(folder) and folder:
             os.mkdir(folder)
-            print "Folder " + folder + " created"
+            print ("Folder " + folder + " created")
 
         full_path = os.path.join(os.getcwd(), "resources")
         full_filename = os.path.join (full_path, filename)
@@ -68,8 +68,8 @@ class JsonHandling():
             #     step_list.append("".join(["{Steps:", i, "}"])) 
 
         robot_list = [{"Robot":robotname, "Sections":message}]
-        print "Type of robot_list" + str(type(robot_list))
-        print robot_list
+        print ("Type of robot_list" + str(type(robot_list)))
+        print (robot_list)
         #else:
             #msg_to_save = [{"Robot": robotname, "Timestamp": unicode(time, "utf-8"), "Comment": message}]
         #if not(os.path.isfile(filename)):
