@@ -36,5 +36,27 @@
 			}
         ],
         "Price Target": "300"
+	},
+    {
+        "Product Name": "Digital Camera",
+        "Product Model": "Sony A7 Alpha 7 Mark II",
+		"Pages to Check": [
+			{
+				"Title": "Gigantti",
+				"Address": "https://www.gigantti.fi"
+			}
+        ],
+        "Price Target": "1100"
+	},
+    {
+        "Product Name": "Cheap computer",
+        "Product Model": "ASUS K20CE-NR039T SSF-DT",
+		"Pages to Check": [
+			{
+				"Title": "Power",
+				"Address": "https://www.power.fi"
+			}
+        ],
+        "Price Target": "350"
 	}
 ]

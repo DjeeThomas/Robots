@@ -63,15 +63,16 @@ Open Page
     :FOR    ${address}    IN    @{pages}
     \    Log    ${address}[Address]
     \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${model}
-    \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}
-    \    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}
+    \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
+    \    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}    ${model}
 
 
 Verkkokauppa
     [Arguments]    ${address}    ${model}
     Go To    ${address}[Address]
     # If the cookies pop up is shown, dismiss it
-    Sleep    2
+    #Sleep    2
+    Wait Until Element Is Visible    ${VK_ALLOW_COOKIES}    timeout=5
     #${ELEMENT}=    Get WebElement    ${VK_ALLOW_COOKIES}
     #Log    ${ELEMENT}
     ${count} =    Get Element Count    ${VK_ALLOW_COOKIES}
@@ -80,21 +81,36 @@ Verkkokauppa
     Input Text    ${SEARCH_INPUT}    ${model} 
     #${STOVE_MODEL}
     Click Button    ${SEARCH_BUTTON}
+    #Sleep    1
+    Wait Until Element Is Visible    ${CLICK_PRODUCT}    timeout=5
     Click Link    ${CLICK_PRODUCT}
-    Sleep    2
-    @{List_of_Elements}=    Get WebElements    ${VK_PRODUCT_PRICE}
+    #Sleep    2
+    Wait Until Element Is Visible    ${VK_PRODUCT_PRICE}    timeout=5
+    #@{List_of_Elements}=    Get WebElements    ${VK_PRODUCT_PRICE}
+    #Page Should Contain Element    ${VK_PRODUCT_PRICE}
     #Run Keyword If    '${List_of_Elements}' != '${EMPTY}'    
     ${Element_text}=    Get Text    ${VK_PRODUCT_PRICE}
-    Log    ${List_of_Elements}
-    Log    ${Element_text}
+    #Log    ${List_of_Elements}
+    Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
     Sleep    5
 
 Gigantti
-    [Arguments]    ${address}
+    [Arguments]    ${address}    ${model}
     Go To    ${address}[Address]
+    Input Text    ${GG_SEARCH_INPUT}    ${model} 
+    #${STOVE_MODEL}
+    Click Button    ${GG_SEARCH_BUTTON}
+    #Click Link    ${CLICK_PRODUCT}
+    #Sleep    2
+    Wait Until Element Is Visible    ${GG_PRODUCT_PRICE}    timeout=5
+    #@{List_of_Elements}=    Get WebElements    ${GG_PRODUCT_PRICE}
+    #Run Keyword Unless    '${List_of_Elements}' == '${EMPTY}'    
+    #Page Should Contain Element    ${GG_PRODUCT_PRICE}
+    ${Element_text}=    Get Text    ${GG_PRODUCT_PRICE}
+    Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
     Sleep    5
 
 Power
-    [Arguments]    ${address}
+    [Arguments]    ${address}    ${model}
     Go To    ${address}[Address]
     Sleep    5
