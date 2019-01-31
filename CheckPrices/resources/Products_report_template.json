@@ -1,0 +1,42 @@
+[
+	{
+        "Product Name": "Stove",
+        "Product Model": "Electrolux EKI55951OW",
+		"Pages Checked": [
+			{
+				"Title": "Verkkokauppa",
+                "Current Price": "749,90"
+            },
+            {
+				"Title": "Gigantti",
+                "Current Price": "779"
+            }
+        ],
+        "Price Target": 
+        {
+            "Target":"600",
+            "Found in": ["Verkkukauppa", "Gigantti"]
+
+        }
+    },
+    {
+        "Product Name": "Digital Camera",
+        "Product Model": "Sony A7 Alpha 7 Mark II",
+		"Pages Checked": [
+			{
+				"Title": "Verkkokauppa",
+                "Current Price": "1399,99"
+            },
+            {
+				"Title": "Gigantti",
+                "Current Price": "1299"
+            }
+        ],
+        "Price Target": 
+        {
+            "Target":"1100",
+            "Found in": [""]
+
+        }
+	}
+]
