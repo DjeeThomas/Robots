@@ -15,7 +15,7 @@ Resource   ../resources/setup_and_teardown.robot
 Resource   ../resources/checkprices_variables.robot
 
 *** Variables ***
-${url}    https://www.verkkokauppa.com
+#${url}    https://www.verkkokauppa.com
 
 *** Tasks ***
 Price Checking
@@ -25,26 +25,31 @@ Price Checking
     #\    Log    ${product}
     #\    Log    ${product}[Pages to Check]
     #\    Log    ${product}[Product Model]
-    \    ${model}    Set Variable    ${product}[Product Model]
-    \    @{pages}    Set Variable    ${product}[Pages to Check]
-    \    Open Page   ${model}    ${pages}
+    #\    ${model}    Set Variable    ${product}[Product Model]
+    #\    @{pages}    Set Variable    ${product}[Pages to Check]
+    \    Open Page   ${product}
 
 *** Keywords ***
 Open Page
-    [Arguments]    ${model}    ${pages}
+    #[Arguments]    ${model}    ${pages}
+    [Arguments]    ${product}
+    @{pages}    Set Variable    ${product}[Pages to Check]
+    ${model}    Set Variable    ${product}[Product Model]
     #Log    ${pages}
     :FOR    ${address}    IN    @{pages}
     #\    Log    ${address}[Address]
-    \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${model}
-    \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
-    \    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}    ${model}
+    #\    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${model}
+    \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${product}
+    #\    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
+    #\    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}    ${model}
 
 
 Verkkokauppa
-    [Arguments]    ${address}    ${model}
+    [Arguments]    ${address}    ${product}
     Go To    ${address}[Address]
     # If the cookies pop up is shown, dismiss it
     Sleep    2
+    ${model}    Set Variable    ${product}[Product Model]
     ${count} =    Get Element Count    ${VK_ALLOW_COOKIES}
     Run Keyword If    ${count} > 0    Click Button    ${VK_ALLOW_COOKIES}
     Input Text    ${VK_SEARCH_INPUT}    ${model} 
@@ -54,6 +59,7 @@ Verkkokauppa
     Wait Until Element Is Visible    ${VK_PRODUCT_PRICE}    timeout=5  
     ${Element_text}=    Get Text    ${VK_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
+    Compare Price    ${product}    ${Element_text}
     #Sleep    5
 
 Gigantti

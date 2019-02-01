@@ -40,15 +40,15 @@ class JsonHandling():
         
         try:
             with open(full_filename, 'r') as jsonfile:
-                users_list = json.load(jsonfile)
+                products_list = json.load(jsonfile)
         except IOError as e:
             return ("Error opening the file ({0}): {1}".format(e.errno, e.strerror))
         except ValueError:  # includes simplejson.decoder.JSONDecodeError
             return ("Error reading data from the json file")
         except:
-            raise ("Unexpected error:", sys.exc_info()[0])
+            return ("Unexpected error:", sys.exc_info()[0])
             
-        return users_list
+        return products_list
 
     def json_logger(self, filename=None, robotname=None, message=None):
         """
