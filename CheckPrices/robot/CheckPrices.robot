@@ -22,9 +22,9 @@ Price Checking
     @{LIST_OF_PRODUCTS}    Read Json File    ${PRODUCT_JSON}
     Open Browser    about:blank    ${DefaultBrowser}
     :FOR    ${product}    IN     @{LIST_OF_PRODUCTS}
-    \    Log    ${product}
-    \    Log    ${product}[Pages to Check]
-    \    Log    ${product}[Product Model]
+    #\    Log    ${product}
+    #\    Log    ${product}[Pages to Check]
+    #\    Log    ${product}[Product Model]
     \    ${model}    Set Variable    ${product}[Product Model]
     \    @{pages}    Set Variable    ${product}[Pages to Check]
     \    Open Page   ${model}    ${pages}
@@ -32,9 +32,9 @@ Price Checking
 *** Keywords ***
 Open Page
     [Arguments]    ${model}    ${pages}
-    Log    ${pages}
+    #Log    ${pages}
     :FOR    ${address}    IN    @{pages}
-    \    Log    ${address}[Address]
+    #\    Log    ${address}[Address]
     \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${model}
     \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
     \    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}    ${model}
@@ -47,14 +47,14 @@ Verkkokauppa
     Sleep    2
     ${count} =    Get Element Count    ${VK_ALLOW_COOKIES}
     Run Keyword If    ${count} > 0    Click Button    ${VK_ALLOW_COOKIES}
-    Input Text    ${SEARCH_INPUT}    ${model} 
-    Click Button    ${SEARCH_BUTTON}
-    Wait Until Element Is Visible    ${CLICK_PRODUCT}    timeout=5
-    Click Link    ${CLICK_PRODUCT}
+    Input Text    ${VK_SEARCH_INPUT}    ${model} 
+    Click Button    ${VK_SEARCH_BUTTON}
+    Wait Until Element Is Visible    ${VK_CLICK_PRODUCT}    timeout=5
+    Click Link    ${VK_CLICK_PRODUCT}
     Wait Until Element Is Visible    ${VK_PRODUCT_PRICE}    timeout=5  
     ${Element_text}=    Get Text    ${VK_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
-    Sleep    5
+    #Sleep    5
 
 Gigantti
     [Arguments]    ${address}    ${model}
@@ -64,7 +64,7 @@ Gigantti
     Wait Until Element Is Visible    ${GG_PRODUCT_PRICE}    timeout=5
     ${Element_text}=    Get Text    ${GG_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
-    Sleep    5
+    #Sleep    5
 
 Power
     [Arguments]    ${address}    ${model}
@@ -82,4 +82,4 @@ Power
     Wait Until Element Is Visible    ${PO_PRODUCT_PRICE}    timeout=5
     ${Element_text}=    Get Text    ${PO_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
-    Sleep    5
+    #Sleep    5
