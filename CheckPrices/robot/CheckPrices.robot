@@ -59,7 +59,8 @@ Verkkokauppa
     Wait Until Element Is Visible    ${VK_PRODUCT_PRICE}    timeout=5  
     ${Element_text}=    Get Text    ${VK_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
-    Compare Price    ${product}    ${Element_text}
+    ${Is_match}=    Compare Price    ${product}[Price Target]    ${Element_text}
+    Save Report    ${product}    ${address}    ${Is_match}    ${Element_text}    ${PROD_REPORT}
     #Sleep    5
 
 Gigantti

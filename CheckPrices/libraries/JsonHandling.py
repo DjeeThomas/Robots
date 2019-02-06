@@ -9,6 +9,7 @@ import sys
 import json
 import io
 import platform
+from pathlib import Path
 
 class JsonHandling():
 
@@ -17,11 +18,13 @@ class JsonHandling():
         Class initialization
 
         """
+        self.json_dict = []
+
         pass
     
     def read_json_file(self, filename=None, testing=False):
         """
-            Reads a json file and returns a dictionary with its content
+            Reads a json file and returns a list of dictionaries with its content
         """
         print ("Json stuff works!")
         folder = os.path.dirname(filename)
@@ -36,7 +39,7 @@ class JsonHandling():
         #     QAutoRobot.fail("The path and file name cannot contain spaces. " + full_filename)
         # print "Full path for users file" + full_filename
         # This gives the folder one level down from the current working folder
-        RPA_path = dirname(realpath(os.getcwd()))
+        #RPA_path = dirname(realpath(os.getcwd()))
         
         try:
             with open(full_filename, 'r') as jsonfile:
@@ -81,7 +84,11 @@ class JsonHandling():
         #return msg_to_save
     
     def file_exists(self, filepath):
-        return os.path.isfile(filepath)
+        #return os.path.isfile(filepath)
+        print (filepath)
+        my_file = Path(filepath)
+        return my_file.is_file()
+
 
 
     def append_to_json_file(self, filename=None, to_save=None):
@@ -97,4 +104,4 @@ class JsonHandling():
             with io.open(filename, "a", encoding='utf-8') as myfile:
                 myfile.write(json.dumps(to_save, ensure_ascii=False, indent=4))
         except IOError as e:
-            QAutoRobot.fail("Error writing data to the file ({0}): {1}".format(e.errno, e.strerror))
+            return "Error writing data to the file ({0}): {1}".format(e.errno, e.strerror)

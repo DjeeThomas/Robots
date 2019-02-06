@@ -1,6 +1,8 @@
 *** Variables ***
 ${BROWSER}    firefox
 ${PRODUCT_JSON}    Products.json
+#${REPORTFILE}    Product_report
+${PROD_REPORT}    E:/Documents/GitHub/Robots/CheckPrices/reports/Products_report.json
 
 # List of web elements for Verkkokauppa.com
 ${VK_KODINKONEET}    id=sidebar-item-19a

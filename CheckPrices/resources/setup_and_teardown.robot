@@ -9,13 +9,13 @@ Resource   ../resources/checkprices_variables.robot
     
 Setup
     Log    setup
-    # Start recording    ${TEST NAME}
+    #Start recording    ${TEST NAME}
 
 Teardown
     #${failure_image_path}=    Get failure image path    ${TEST NAME}
     Run Keyword If Test Failed    Capture Page Screenshot    ${OUTPUTDIR}/selenium-screenshot_${TEST NAME}_{index}.png
 
-    # Stop recording
+    #Stop recording
     
     #${documentation}=    Generate failure documentation    ${TEST_DOCUMENTATION}    ${TEST NAME}
     #Run Keyword If Test Failed    Set test documentation    ${documentation}
