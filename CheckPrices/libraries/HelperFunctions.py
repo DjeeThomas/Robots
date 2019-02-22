@@ -58,6 +58,14 @@ class HelperFunctions():
 
         if report.file_exists(filename):
             print ("File exists!")
+            # Load existing file to a list
+            product_list = report.read_json_file(filename)
+            print (product_list)
+            for prod in product_list:
+                if prod["Product Name"] ==  product["Product Name"]:
+                    print ("Holly crap! You found one! Well done!")
+            # Find if it has the product
+            # If it does, add the information there
         else:
             print ("File doesn't exist! Creating one...")
             d1 = {k: product[k] for k in product.keys() & {'Product Name', 'Product Model'}}
