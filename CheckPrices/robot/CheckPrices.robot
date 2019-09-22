@@ -40,7 +40,7 @@ Open Page
     #\    Log    ${address}[Address]
     #\    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${model}
     \    Run Keyword If    '${address}[Title]' == 'Verkkokauppa'    Verkkokauppa    ${address}    ${product}
-    #\    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
+    \    Run Keyword If    '${address}[Title]' == 'Gigantti'    Gigantti    ${address}    ${model}
     #\    Run Keyword If    '${address}[Title]' == 'Power'    Power    ${address}    ${model}
 
 
@@ -60,7 +60,7 @@ Verkkokauppa
     ${Element_text}=    Get Text    ${VK_PRODUCT_PRICE}
     Run Keyword If    '${Element_text}' != '${EMPTY}'    Log    ${Element_text}
     ${Is_match}=    Compare Price    ${product}[Price Target]    ${Element_text}
-    Save Report    ${product}    ${address}    ${Is_match}    ${Element_text}    ${PROD_REPORT}
+    ${Success}=    Save Report    ${product}    ${address}    ${Is_match}    ${Element_text}    ${PROD_REPORT}
     #Sleep    5
 
 Gigantti
@@ -83,6 +83,7 @@ Power
     Sleep    3
     Click Element    ${PO_PROMO_POPUP_OPEN}
     Click Element    ${PO_PROMO_POPUP_CLOSE}
+    Wait Until Element Is Visible    ${PO_PRODUCT}    timeout=5
     ${Element_text}=    Get Text    ${PO_PRODUCT}
     ${Result}=    String Matches    ${model}    ${Element_text}
     Run Keyword If    '${Result}' == 'True'    Click Element    ${PO_PRODUCT}

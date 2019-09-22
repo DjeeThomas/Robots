@@ -8,7 +8,7 @@
                 "Address": "https://www.verkkokauppa.com"
             }
         ],
-        "Price Target": "700"
+        "Price Target": "800"
     },
     {
         "Product Name": "Digital Camera",
@@ -19,7 +19,7 @@
 				"Address": "https://www.gigantti.fi"
 			}
         ],
-        "Price Target": "1100"
+        "Price Target": "1500"
 	},
     {
         "Product Name": "Cheap computer",
@@ -30,6 +30,6 @@
 				"Address": "https://www.power.fi"
 			}
         ],
-        "Price Target": "350"
+        "Price Target": "550"
 	}
 ]

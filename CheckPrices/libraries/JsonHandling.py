@@ -21,7 +21,14 @@ class JsonHandling():
         self.json_dict = []
 
         pass
+
+    # def read_json_dic(self):
+    #     return self.json_dict
     
+    # def write_json_dic(self, value):
+    #     self.json_dict = value
+
+
     def read_json_file(self, filename=None, testing=False):
         """
             Reads a json file and returns a list of dictionaries with its content
@@ -102,6 +109,21 @@ class JsonHandling():
 
         try:
             with io.open(filename, "a", encoding='utf-8') as myfile:
+                myfile.write(json.dumps(to_save, ensure_ascii=False, indent=4))
+        except IOError as e:
+            return "Error writing data to the file ({0}): {1}".format(e.errno, e.strerror)
+    
+    def write_to_json_file(self, filename=None, to_save=None):
+        """
+        :param filename: Path to the .json file where the information will be saved. Must be full path.
+        :param to_save: Information to save to the json file
+        -------------
+        
+        Constructs a string based on the message and time and saves it to the filename under the robotname key
+        """
+
+        try:
+            with io.open(filename, "w", encoding='utf-8') as myfile:
                 myfile.write(json.dumps(to_save, ensure_ascii=False, indent=4))
         except IOError as e:
             return "Error writing data to the file ({0}): {1}".format(e.errno, e.strerror)
