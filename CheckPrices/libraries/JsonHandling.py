@@ -34,12 +34,12 @@ class JsonHandling():
             Reads a json file and returns a list of dictionaries with its content
         """
         print ("Json stuff works!")
-        folder = os.path.dirname(filename)
-        if not os.path.isdir(folder) and folder:
-            os.mkdir(folder)
-            print ("Folder " + folder + " created")
-
-        full_path = os.path.join(os.getcwd(), "resources")
+        # folder = os.path.dirname(filename)
+        # if not os.path.isdir(folder) and folder:
+        #     os.mkdir(folder)
+        #     print ("Folder " + folder + " created")
+        parent_folder=Path(os.getcwd()).parent
+        full_path = os.path.join(parent_folder, "resources")
         full_filename = os.path.join (full_path, filename)
 
         # if " " in full_filename:

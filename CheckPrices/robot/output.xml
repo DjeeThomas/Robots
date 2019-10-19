@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.2 on win32)" generated="20191019 22:13:27.320" rpa="true">
+<suite id="s1" name="CheckPrices" source="E:\Documents\GitHub\Robots\CheckPrices\robot\CheckPrices.robot">
+<kw name="Test suite setup" library="setup_and_teardown" type="setup">
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${DefaultBrowser}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:27.597" level="INFO">${DefaultBrowser} = firefox</msg>
+<status status="PASS" starttime="20191019 22:13:27.596" endtime="20191019 22:13:27.597"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:27.596" endtime="20191019 22:13:27.597"></status>
+</kw>
+<test id="s1-t1" name="Price Checking">
+<kw name="Setup" library="setup_and_teardown" type="setup">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>setup</arg>
+</arguments>
+<msg timestamp="20191019 22:13:27.598" level="INFO">setup</msg>
+<status status="PASS" starttime="20191019 22:13:27.598" endtime="20191019 22:13:27.598"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:27.598" endtime="20191019 22:13:27.598"></status>
+</kw>
+<kw name="Read Json File" library="JsonHandling">
+<doc>Reads a json file and returns a list of dictionaries with its content</doc>
+<arguments>
+<arg>${PRODUCT_JSON}</arg>
+</arguments>
+<assign>
+<var>@{LIST_OF_PRODUCTS}</var>
+</assign>
+<msg timestamp="20191019 22:13:27.599" level="INFO">Json stuff works!</msg>
+<msg timestamp="20191019 22:13:27.599" level="INFO">@{LIST_OF_PRODUCTS} = [ {'Product Name': 'Stove', 'Product Model': 'Electrolux EKI55951OW', 'Pages to Check': [{'Title': 'Verkkokauppa', 'Address': 'https://www.verkkokauppa.com'}], 'Price Target': '600'} | {'Product Name'...</msg>
+<status status="PASS" starttime="20191019 22:13:27.599" endtime="20191019 22:13:27.599"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>${DefaultBrowser}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:27.600" level="INFO">Opening browser 'firefox' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20191019 22:13:27.600" endtime="20191019 22:13:33.430"></status>
+</kw>
+<kw name="${product} IN [ @{LIST_OF_PRODUCTS} ]" type="for">
+<kw name="${product} = {'Product Name': 'Stove', 'Product Model': 'Electrolux EKI55951OW', 'Pages to Check': [{'Title': 'Verkkokauppa', 'Address': 'https://www.verkkokauppa.com'}], 'Price Target': '600'}" type="foritem">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.431" level="INFO">{'Product Name': 'Stove', 'Product Model': 'Electrolux EKI55951OW', 'Pages to Check': [{'Title': 'Verkkokauppa', 'Address': 'https://www.verkkokauppa.com'}], 'Price Target': '600'}</msg>
+<status status="PASS" starttime="20191019 22:13:33.431" endtime="20191019 22:13:33.431"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}[Price Target]</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.432" level="INFO">600</msg>
+<status status="PASS" starttime="20191019 22:13:33.432" endtime="20191019 22:13:33.432"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.431" endtime="20191019 22:13:33.432"></status>
+</kw>
+<kw name="${product} = {'Product Name': 'Nintendo Switch', 'Product Model': 'Nintendo Switch', 'Pages to Check': [{'Title': 'Verkkokauppa', 'Address': 'https://www.verkkokauppa.com'}, {'Title': 'Gigantti', 'Address': 'https..." type="foritem">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.433" level="INFO">{'Product Name': 'Nintendo Switch', 'Product Model': 'Nintendo Switch', 'Pages to Check': [{'Title': 'Verkkokauppa', 'Address': 'https://www.verkkokauppa.com'}, {'Title': 'Gigantti', 'Address': 'https://www.gigantti.fi'}, {'Title': 'Power', 'Address': 'https://www.power.fi'}, {'Title': 'AdLibris', 'Address': 'https://www.verkkokauppa.com'}], 'Price Target': '800'}</msg>
+<status status="PASS" starttime="20191019 22:13:33.433" endtime="20191019 22:13:33.433"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}[Price Target]</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.434" level="INFO">800</msg>
+<status status="PASS" starttime="20191019 22:13:33.434" endtime="20191019 22:13:33.434"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.432" endtime="20191019 22:13:33.434"></status>
+</kw>
+<kw name="${product} = {'Product Name': 'Digital Camera', 'Product Model': 'Sony A7 Alpha 7 Mark II', 'Pages to Check': [{'Title': 'Gigantti', 'Address': 'https://www.gigantti.fi'}], 'Price Target': '1500'}" type="foritem">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.435" level="INFO">{'Product Name': 'Digital Camera', 'Product Model': 'Sony A7 Alpha 7 Mark II', 'Pages to Check': [{'Title': 'Gigantti', 'Address': 'https://www.gigantti.fi'}], 'Price Target': '1500'}</msg>
+<status status="PASS" starttime="20191019 22:13:33.435" endtime="20191019 22:13:33.435"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}[Price Target]</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.436" level="INFO">1500</msg>
+<status status="PASS" starttime="20191019 22:13:33.435" endtime="20191019 22:13:33.436"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.434" endtime="20191019 22:13:33.436"></status>
+</kw>
+<kw name="${product} = {'Product Name': 'Cheap computer', 'Product Model': 'ASUS K20CE-NR039T SSF-DT', 'Pages to Check': [{'Title': 'Power', 'Address': 'https://www.power.fi'}], 'Price Target': '550'}" type="foritem">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.438" level="INFO">{'Product Name': 'Cheap computer', 'Product Model': 'ASUS K20CE-NR039T SSF-DT', 'Pages to Check': [{'Title': 'Power', 'Address': 'https://www.power.fi'}], 'Price Target': '550'}</msg>
+<status status="PASS" starttime="20191019 22:13:33.437" endtime="20191019 22:13:33.438"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${product}[Price Target]</arg>
+</arguments>
+<msg timestamp="20191019 22:13:33.439" level="INFO">550</msg>
+<status status="PASS" starttime="20191019 22:13:33.438" endtime="20191019 22:13:33.440"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.437" endtime="20191019 22:13:33.440"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.431" endtime="20191019 22:13:33.440"></status>
+</kw>
+<kw name="Teardown" library="setup_and_teardown" type="teardown">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Capture Page Screenshot</arg>
+<arg>${OUTPUTDIR}/selenium-screenshot_${TEST NAME}_{index}.png</arg>
+</arguments>
+<status status="PASS" starttime="20191019 22:13:33.449" endtime="20191019 22:13:33.450"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.449" endtime="20191019 22:13:33.450"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:27.597" endtime="20191019 22:13:33.450" critical="yes"></status>
+</test>
+<kw name="Test suite teardown" library="setup_and_teardown" type="teardown">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20191019 22:13:33.454" endtime="20191019 22:13:34.459"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:33.453" endtime="20191019 22:13:34.459"></status>
+</kw>
+<status status="PASS" starttime="20191019 22:13:27.322" endtime="20191019 22:13:34.459"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tasks</stat>
+<stat pass="1" fail="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="CheckPrices">CheckPrices</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

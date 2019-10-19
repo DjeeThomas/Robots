@@ -8,7 +8,30 @@
                 "Address": "https://www.verkkokauppa.com"
             }
         ],
-        "Price Target": "800"
+        "Price Target": "600"
+    },
+    {
+        "Product Name": "Nintendo Switch",
+        "Product Model": "Nintendo Switch",
+		"Pages to Check": [
+			{
+				"Title": "Verkkokauppa",
+                "Address": "https://www.verkkokauppa.com"
+            },
+            {
+				"Title": "Gigantti",
+                "Address": "https://www.gigantti.fi"
+            },
+            {
+				"Title": "Power",
+                "Address": "https://www.power.fi"
+            },
+            {
+				"Title": "AdLibris",
+                "Address": "https://www.verkkokauppa.com"
+            }
+        ],
+        "Price Target": "300"
     },
     {
         "Product Name": "Digital Camera",

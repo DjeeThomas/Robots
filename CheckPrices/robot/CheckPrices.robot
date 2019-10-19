@@ -29,12 +29,27 @@ Price Checking
     @{LIST_OF_PRODUCTS}    Read Json File    ${PRODUCT_JSON}
     Open Browser    about:blank    ${DefaultBrowser}
     :FOR    ${product}    IN     @{LIST_OF_PRODUCTS}
-    #\    Log    ${product}
-    #\    Log    ${product}[Pages to Check]
+    \    Log    ${product}
+    \    Log    ${product}[Price Target]
+    # \    @{pages_to_check}=    Fetch The Pages That Should Be Checked    ${product}
+    # \    Log    ${pages_to_check}
+    # \    @{current_prices}=    Fetch The Prices From The Pages    @{pages_to_check}
+    # \    Log    @{current_prices}
+    # \    @{target_price_met}=    Check What Prices Match Target    @{current_prices}    ${product}['Price Target']
+    # \    Save Information To File    ${product}    ${current_prices}    ${target_price_met}
+
+
+
     #\    Log    ${product}[Product Model]
     #\    ${model}    Set Variable    ${product}[Product Model]
     #\    @{pages}    Set Variable    ${product}[Pages to Check]
-    \    Open Page   ${product}
+    # \    Open Page   ${product}
+
+    # For each product:
+    #   Extract the list of pages where it is going to be checked
+    #   For each page, get the price of the article
+    #   Store the price in a Variable
+    #   Compare the price with the target
 
 *** Keywords ***
 Open Page
