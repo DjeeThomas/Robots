@@ -19,6 +19,13 @@ Resource   ../resources/checkprices_variables.robot
 
 *** Tasks ***
 Price Checking
+    # Read list from JSON file
+    # For each item/webpage/target price
+    #      Open the appropriate keyword for the site where the product is found and price is checked
+    #      Save the results to another json: If price of item is below target, flag it somehow
+    # If there are items whose price is lower than target, create a report just for those
+    # Display that report    
+
     @{LIST_OF_PRODUCTS}    Read Json File    ${PRODUCT_JSON}
     Open Browser    about:blank    ${DefaultBrowser}
     :FOR    ${product}    IN     @{LIST_OF_PRODUCTS}
